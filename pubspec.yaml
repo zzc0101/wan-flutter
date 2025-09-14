@@ -33,6 +33,8 @@ dependencies:
   flutter_html: ^3.0.0-alpha.6
   # 本地化存储
   shared_preferences: ^2.0.15
+  # banner 轮播组件
+  flutter_swiper_view: ^1.1.8
 
 dev_dependencies:
   flutter_test:
