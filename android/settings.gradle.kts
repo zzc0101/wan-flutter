@@ -16,6 +16,7 @@ pluginManagement {
         google()
         mavenCentral()
         maven { url=uri("https://maven.aliyun.com/repository/google") }
+        maven { url=uri("https://maven.aliyun.com/repository/google-plugin") }
         maven { url=uri("https://maven.aliyun.com/repository/jcenter") }
         maven { url=uri("https://maven.aliyun.com/repository/central") }
     }
