@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       // 屏幕适配伏组件组件
       child: ScreenUtilInit(
         designSize: designSize,
-        builder: (cintext, child) {
+        builder: (context, child) {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
