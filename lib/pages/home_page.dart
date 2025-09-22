@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:wan_flutter/pages/web_view_page.dart';
+import 'package:wan_flutter/route/routest.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -54,9 +55,13 @@ class _HomePageState extends State<HomePage> {
     // 点击事件有两种实现方式： 1、 GestureDetector 2、InkWell()
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return WebViewPage(title: "首页跳转测试",);
-        }));
+        // Routils.push(context, WebViewPage(title: "首页跳转过来的"));
+        // 路由跳转方式如下
+        Navigator.pushNamed(context, RoutePath.webViewPage);
+        // 原始跳转方式如下
+        // Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //   return WebViewPage(title: "首页跳转测试",);
+        // }));
       },
       child: Container(
         margin: EdgeInsets.only(top: 5.h, bottom: 5.h, left: 10.w, right: 10.w),
