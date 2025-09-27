@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wan_flutter/pages/home_page.dart';
+import 'package:wan_flutter/pages/home/home_page.dart';
 import 'package:wan_flutter/pages/web_view_page.dart';
 
 // 路由管理类
