@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:wan_flutter/http/http_method.dart';
+import 'package:wan_flutter/http/print_log_interceptor.dart';
+import 'package:wan_flutter/http/rsp_interceptor.dart';
 
 class DioInstance {
   static DioInstance? _instance;
@@ -29,6 +31,10 @@ class DioInstance {
       receiveTimeout: receiveTimeout ?? _defaultTime,
       sendTimeout: sendTimeout ?? _defaultTime,
     );
+    // 添加打印请求返回信息拦截器
+    _dio.interceptors.add(PrintLogInterceptor());
+    // 添加统一返回值处理拦截器
+    _dio.interceptors.add(ResponseInterceptor());
   }
 
   /// get请求方法
@@ -58,13 +64,13 @@ class DioInstance {
     Object? data,
     Map<String, dynamic>? queryParameters,
     Options? options,
-    CancelToken? cancelToken
+    CancelToken? cancelToken,
   }) async {
     return await _dio.get(
       path,
       queryParameters: queryParameters,
       options:
-      options ??
+          options ??
           Options(
             method: HttpMethod.POST,
             receiveTimeout: _defaultTime,

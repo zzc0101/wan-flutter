@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:provider/provider.dart';
-import 'package:wan_flutter/datas/home_list_data.dart';
 import 'package:wan_flutter/pages/home/home_vm.dart';
+import 'package:wan_flutter/repository/datas/home_list_data.dart';
 import 'package:wan_flutter/route/RouteUtils.dart';
 import 'package:wan_flutter/route/routest.dart';
 
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     homeViewModel.getBanner();
-    homeViewModel.getHomeList();
+    homeViewModel.initListData();
   }
 
   @override
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 color: Colors.lightBlue,
                 child: Image.network(
-                  vm.bannerList?[index].imagePath ?? '',
+                  vm.bannerList?[index]?.imagePath ?? '',
                   fit: BoxFit.fill,
                 ),
               );
@@ -148,13 +148,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(width: 5.w),
-                Text(
-                  '置顶',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                (item?.type?.toInt() == 1)
+                    ? Text(
+                        '置顶',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    : SizedBox(),
               ],
             ),
             Text(
