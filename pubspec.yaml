@@ -35,6 +35,8 @@ dependencies:
   shared_preferences: ^2.0.15
   # banner 轮播组件
   flutter_swiper_view: ^1.1.8
+  # 下拉刷新
+  pull_to_refresh_flutter3: ^2.0.2
 
 dev_dependencies:
   flutter_test:

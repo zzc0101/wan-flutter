@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:wan_flutter/common_ui/smart_refresh_widget.dart';
 import 'package:wan_flutter/pages/home/home_vm.dart';
 import 'package:wan_flutter/repository/datas/home_list_data.dart';
 import 'package:wan_flutter/route/RouteUtils.dart';
@@ -17,13 +19,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomeViewModel homeViewModel = HomeViewModel();
+  RefreshController refreshController = RefreshController();
 
   @override
   void initState() {
     super.initState();
     homeViewModel.getBanner();
-    homeViewModel.initListData();
+    homeViewModel.initListData(false);
   }
+
+void refreshOrLoad(bool loadMore) {
+    homeViewModel.initListData(loadMore, callback: (loadMore) {
+      if(loadMore) {
+        refreshController.loadComplete();
+      } else {
+        refreshController.refreshCompleted();
+      }
+    });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +46,23 @@ class _HomePageState extends State<HomePage> {
       },
       child: Scaffold(
         body: SafeArea(
-          // SingleChild 相当于整个页面滚动
-          child: SingleChildScrollView(
-            child: Column(children: [_banner(), _homeListView()]),
+          child: SmartRefreshWidget(
+            controller: refreshController,
+            onLoading: () {
+              // 上拉加载回调
+              refreshOrLoad(true);
+            },
+            onRefresh: () {
+              // 下拉刷新回调
+              homeViewModel.getBanner().then((value) {
+                refreshOrLoad(false);
+              });
+            },
+            child: SingleChildScrollView(
+              child: Column(children: [_banner(), _homeListView()]),
+            ),
           ),
+          // SingleChild 相当于整个页面滚动
         ),
       ),
     );

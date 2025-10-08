@@ -352,6 +352,13 @@
             </list>
           </value>
         </entry>
+        <entry key="pull_to_refresh_flutter3">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/pull_to_refresh_flutter3-2.0.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="shared_preferences">
           <value>
             <list>
@@ -362,7 +369,7 @@
         <entry key="shared_preferences_android">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.12/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.13/lib" />
             </list>
           </value>
         </entry>
@@ -565,7 +572,7 @@
         <entry key="win32">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/win32-5.14.0/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/win32-5.15.0/lib" />
             </list>
           </value>
         </entry>
@@ -633,8 +640,9 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/platform-3.1.6/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/plugin_platform_interface-2.1.8/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/provider-6.1.5+1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/pull_to_refresh_flutter3-2.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-2.5.3/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.12/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_android-2.4.13/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_foundation-2.5.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_linux-2.4.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_platform_interface-2.4.1/lib" />
@@ -662,7 +670,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_android-4.10.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_platform_interface-2.14.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_wkwebview-3.23.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/win32-5.14.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/win32-5.15.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/win32_registry-2.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/xdg_directories-1.1.0/lib" />
       <root url="file://$USER_HOME$/Flutter/flutter/bin/cache/pkg/sky_engine/lib" />

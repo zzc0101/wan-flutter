@@ -5,6 +5,7 @@ import 'package:wan_flutter/repository/datas/home_banner_data.dart';
 import 'package:wan_flutter/repository/datas/home_list_data.dart';
 
 class HomeViewModel with ChangeNotifier {
+  int pageCount = 1;
   List<HomeBannerData?>? bannerList;
   List<HomeListItemData>? listData = [];
   Dio dio = Dio();
@@ -17,22 +18,50 @@ class HomeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future initListData() async {
-    await getTopList();
-    await getHomeList();
+  Future initListData(bool loadMore, {ValueChanged<bool>? callback}) async {
+    if (loadMore) {
+      pageCount++;
+    } else {
+      pageCount = 1;
+      listData?.clear();
+    }
+    // 先获取置顶数据
+    getTopList(loadMore).then((topList) {
+      if (!loadMore) {
+        listData?.addAll(topList ?? []);
+      }
+
+      // 再获取首页列表
+      getHomeList(loadMore).then((allList) {
+        listData?.addAll(allList ?? []);
+        // 刷新
+        notifyListeners();
+
+        // 回调出去
+        callback?.call(loadMore);
+      });
+    });
   }
 
   /// 获取首页文章列表
-  Future getHomeList() async {
-    List<HomeListItemData>? list = await Api.instance.getHomeList();
-    listData?.addAll(list ?? []);
-    notifyListeners();
+  Future getHomeList(bool loadMore) async {
+    List<HomeListItemData>? list = await Api.instance.getHomeList("$pageCount");
+    if (list != null && list.isNotEmpty) {
+      return list;
+    } else {
+      if (loadMore && pageCount > 0) {
+        pageCount--;
+      }
+      return [];
+    }
   }
 
   /// 获取首页置顶数据
-  Future getTopList() async {
+  Future<List<HomeListItemData>?> getTopList(bool loadMore) async {
+    if (loadMore) {
+      return [];
+    }
     List<HomeListItemData>? list = await Api.instance.getHomeTopList();
-    listData?.clear();
-    listData?.addAll(list ?? []);
+    return list;
   }
 }
