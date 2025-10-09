@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:wan_flutter/http/dio_instance.dart';
+import 'package:wan_flutter/repository/datas/common_website_data.dart';
 import 'package:wan_flutter/repository/datas/home_banner_data.dart';
 import 'package:wan_flutter/repository/datas/home_list_data.dart';
+import 'package:wan_flutter/repository/datas/search_hot_keys_data.dart';
 
 class Api {
   static Api instance = Api._();
@@ -32,5 +34,23 @@ class Api {
     );
     HomeTopListData homeTopData = HomeTopListData.fromJson(response.data);
     return homeTopData.topList;
+  }
+
+  /// 获取常用网站
+  Future<List<CommonWebsiteData>?> getWebsiteList() async {
+    Response response = await DioInstance.instance().get(
+      path: 'friend/json',
+    );
+    CommonWebsiteListData commonWebsiteListData = CommonWebsiteListData.fromJson(response.data);
+    return commonWebsiteListData.websiteList;
+  }
+
+  /// 获取搜素热点
+  Future<List<SearchHotKeysData>?> getSearchHotKeys() async {
+    Response response = await DioInstance.instance().get(
+      path: 'hotkey/json',
+    );
+    SearchHotKeysListData searchHotKeysListData = SearchHotKeysListData.fromJson(response.data);
+    return searchHotKeysListData.keyList;
   }
 }
