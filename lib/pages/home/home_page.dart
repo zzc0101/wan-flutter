@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-import 'package:wan_flutter/common_ui/smart_refresh_widget.dart';
+import 'package:wan_flutter/common_ui/smart_refresh/smart_refresh_widget.dart';
 import 'package:wan_flutter/pages/home/home_vm.dart';
 import 'package:wan_flutter/repository/datas/home_list_data.dart';
-import 'package:wan_flutter/route/RouteUtils.dart';
+import 'package:wan_flutter/route/route_utils.dart';
 import 'package:wan_flutter/route/routest.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,7 +69,6 @@ void refreshOrLoad(bool loadMore) {
   }
 
   Widget _homeListView() {
-    print('_homeListView 刷新');
     return Consumer<HomeViewModel>(
       builder: (context, vm, child) {
         return ListView.builder(
